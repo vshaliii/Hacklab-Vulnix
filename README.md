@@ -4,7 +4,7 @@ Author: Reboot User
 
 Download link: https://download.vulnhub.com/hacklab/Vulnix.7z
 
-# Hacklab: VULNIX writeup
+# SCANNING
 
 1. **nmap -p- Target_ip**
 
