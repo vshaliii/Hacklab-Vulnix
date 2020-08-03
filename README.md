@@ -328,3 +328,60 @@ It will ask you to enter any password
 Finally we got root shell and flag in trophy.txt
 
 ![Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2036.png](Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2036.png)
+
+# Privilege escalation (Another method)
+
+Check sudoers list
+
+![Vulnix%20f8cd8b04dabd46119da614d483e446b5/Untitled.png](Vulnix%20f8cd8b04dabd46119da614d483e446b5/Untitled.png)
+
+/etc/exports is writable
+
+use command **sudoedit /etc/exports** to write in file
+
+![Vulnix%20f8cd8b04dabd46119da614d483e446b5/Untitled%201.png](Vulnix%20f8cd8b04dabd46119da614d483e446b5/Untitled%201.png)
+
+Add following lines in /etc/exports file.
+
+```jsx
+**/root     *(rw,no_root_squash)
+/etc      *(rw,no_root_squash)**
+```
+
+![Vulnix%20f8cd8b04dabd46119da614d483e446b5/Untitled%202.png](Vulnix%20f8cd8b04dabd46119da614d483e446b5/Untitled%202.png)
+
+![Vulnix%20f8cd8b04dabd46119da614d483e446b5/Untitled%203.png](Vulnix%20f8cd8b04dabd46119da614d483e446b5/Untitled%203.png)
+
+After this restart target machine
+
+![Vulnix%20f8cd8b04dabd46119da614d483e446b5/Untitled%204.png](Vulnix%20f8cd8b04dabd46119da614d483e446b5/Untitled%204.png)
+
+Create directory root and etc in /tmp folder.
+
+![Vulnix%20f8cd8b04dabd46119da614d483e446b5/Untitled%205.png](Vulnix%20f8cd8b04dabd46119da614d483e446b5/Untitled%205.png)
+
+Mount root and etc directory.
+
+**mount -t nfs 192.168.122.130:/root /tmp/rOOt**
+
+**mount -t nfs 192.168.122.130:/etc /tmp/etc**
+
+![Vulnix%20f8cd8b04dabd46119da614d483e446b5/Untitled%206.png](Vulnix%20f8cd8b04dabd46119da614d483e446b5/Untitled%206.png)
+
+cd /tmp/etc
+
+![Vulnix%20f8cd8b04dabd46119da614d483e446b5/Untitled%207.png](Vulnix%20f8cd8b04dabd46119da614d483e446b5/Untitled%207.png)
+
+copy password of any user from /etc/shadow file 
+
+![Vulnix%20f8cd8b04dabd46119da614d483e446b5/Untitled%208.png](Vulnix%20f8cd8b04dabd46119da614d483e446b5/Untitled%208.png)
+
+cd /tmp/etc
+
+Paste that password in passwd file in root user.
+
+![Vulnix%20f8cd8b04dabd46119da614d483e446b5/Untitled%209.png](Vulnix%20f8cd8b04dabd46119da614d483e446b5/Untitled%209.png)
+
+Then take shell of root using ssh
+
+![Vulnix%20f8cd8b04dabd46119da614d483e446b5/Untitled%2010.png](Vulnix%20f8cd8b04dabd46119da614d483e446b5/Untitled%2010.png)
